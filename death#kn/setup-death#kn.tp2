@@ -106,7 +106,7 @@ COPY_EXISTING ~spwi815.spl~ ~override/death#k5.spl~ // power word blind
 COPY_EXISTING ~spwi811.spl~ ~override/death#k6.spl~ // symbol fear
     WRITE_SHORT 0x001c 4
 
-COPY_EXISTING ~spwi816.spl~ ~override/death#k7.spl~ // symbol death
+COPY_EXISTING ~spwi817.spl~ ~override/death#k7.spl~ // symbol death
     WRITE_SHORT 0x001c 4
 
 COPY_EXISTING ~spwi912.spl~ ~override/death#k8.spl~ // power word kill
