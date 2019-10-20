@@ -1,0 +1,113 @@
+BACKUP ~death#kn/backup~
+AUTHOR ~HybridGame~
+VERSION "20191020"
+
+LANGUAGE    ~Korean~
+            ~Korean~
+            ~death#kn/lang/korean/setup.tra~
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Death Knight
+
+BEGIN ~Death Knight kit for Paladin~ DESIGNATED 0
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee~ @1
+
+INCLUDE "death#kn/lib/fl#add_kit_ee.tpa"
+
+// Add kit.
+PRINT ~===== Adding kit.~
+ADD_KIT ~death#kn~
+    // CLASWEAP.2DA : BG1 proficiencies. (deprecated)
+    ~death#kn   1 1 1 1 1 1 1 1~
+    
+    // WEAPPROF.2DA : BG2 proficiencies
+    //11                                T   S           F   Q             S S
+    //10                                W   C           L   U             W I
+    //9                         B L S   O   I   W       A   A             O N
+    //8                         A O H   H   M   A       I   R C   S       R G
+    //7         L S           M S N O   A   I   R     H L   T R L H     2 D L 2                 E E E E E E E E E E E
+    //6         _ _       S   I T G R   N K T D H     A M   E O O O     H A E W E E E E E E E E X X X X X X X X X X X
+    //5         S S   S B P   S A S T   D A A A A   S L O   R S N R   S A N W E X X X X X X X X T T T T T T T T T T T
+    //4         W W   P L I   S R W S   E T R G M C P B R M S S G T D L N D E A T T T T T T T T R R R R R R R R R R R
+    //3         O O B E U K A I D O W A D A W G M L E E N A T B B B A I D S A P R R R R R R R R A A A A A A A A A A A
+    //2        	R R O A N E X L S R O X S N A E E U A R I C A O O O R N E H P O A A A A A A A A 1 1 1 1 1 1 1 1 1 1 2
+    //1      	D D W R T D E E W D R E W A K R R B R D N E F W W W T G D I O N 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+    ~death#kn   2 2 2 2 2 2 2 2 5 5 0 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  
+    // ABCLASRQ.2DA : Minimum stats at character creation
+    ~death#kn   18 11 11 17 11 18~
+    
+    // ABCLSMOD.2DA : Stat modifiers at character creation
+    ~death#kn   0 0 0 0 0 0~
+    
+    // ABDCDSRQ.2DA : Stats requirement to dual-class
+    ~death#kn   0 17 0 0 0 0~
+    
+    // ABDCSCRQ.2DA : Stats requirement to dual-class
+    ~death#kn   0 0 0 17 0 0~
+    
+    //          LG LN LE NG TN NE CG CN CE ALIGNMNT.2DA : Selectable alignment
+    ~death#kn   0  0  0  0  0  0  0  1  0~
+    
+    //          F C M T D R DUALCLAS.2DA : Dual possible classes
+    ~death#kn   0 0 0 0 0 0~
+    
+    // Kit's own clab*.2da
+    ~death#kn/2da/death#kn.2da~
+    
+    // KITTABLE.2DA : Selectable race
+    ~K_P_H~
+    
+    // KITLIST.2DA : Kit's usability flag
+    ~0x00000010 6~
+    
+    // High level abilities. prefix lu file required
+    ~Pa0~
+    
+    // 25stweap.2da : TOB starting items
+    ~* * * * * * * * * * * * * * * * * * * *~
+    
+    // Lowercase name
+    SAY @101
+    
+    // First uppercase name
+    SAY @102
+    
+    // Description
+    SAY @103
+
+// Kit detail.
+LAF fl#add_kit_ee
+    STR_VAR
+        kit_name = ~death#kn~
+        hpclass = ~HPWAR~
+END
+
+// protection: level drain(216), disease(78), kill (13,55,209), disintegrate(238), petrificatino(134), turn(297)
+COPY ~death#kn/spl/death#k0.spl~ ~override~ // passive
+
+COPY ~death#kn/spl/death#k1.spl~ ~override~ // 5 feet aura of fear
+
+COPY ~death#kn/spl/death#k2.spl~ ~override~ // 20D6 fire ball
+SAY NAME1 @201
+
+COPY ~death#kn/spl/death#k3.spl~ ~override~ // dispel magic
+SAY NAME1 @202
+
+COPY_EXISTING ~spwi501.spl~ ~override/death#k9.spl~ // animate dead
+    WRITE_SHORT 0x001c 4
+
+COPY_EXISTING ~spwi715.spl~ ~override/death#k4.spl~ // power word stun
+    WRITE_SHORT 0x001c 4
+
+COPY_EXISTING ~spwi815.spl~ ~override/death#k5.spl~ // power word blind
+    WRITE_SHORT 0x001c 4
+
+COPY_EXISTING ~spwi811.spl~ ~override/death#k6.spl~ // symbol fear
+    WRITE_SHORT 0x001c 4
+
+COPY_EXISTING ~spwi816.spl~ ~override/death#k7.spl~ // symbol death
+    WRITE_SHORT 0x001c 4
+
+COPY_EXISTING ~spwi912.spl~ ~override/death#k8.spl~ // power word kill
+    WRITE_SHORT 0x001c 4
