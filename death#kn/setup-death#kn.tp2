@@ -1,6 +1,6 @@
 BACKUP ~death#kn/backup~
 AUTHOR ~HybridGame~
-VERSION "20191020"
+VERSION "20191024"
 
 LANGUAGE    ~Korean~
             ~Korean~
@@ -41,10 +41,10 @@ ADD_KIT ~death#kn~
     ~death#kn   0 0 0 0 0 0~
     
     // ABDCDSRQ.2DA : Stats requirement to dual-class
-    ~death#kn   0 17 0 0 0 0~
+    ~death#kn   0 0 0 0 0 0~
     
     // ABDCSCRQ.2DA : Stats requirement to dual-class
-    ~death#kn   0 0 0 17 0 0~
+    ~death#kn   0 0 0 0 0 0~
     
     //          LG LN LE NG TN NE CG CN CE ALIGNMNT.2DA : Selectable alignment
     ~death#kn   0  0  0  0  0  0  0  1  0~
@@ -86,7 +86,11 @@ END
 // protection: level drain(216), disease(78), kill (13,55,209), disintegrate(238), petrificatino(134), turn(297)
 COPY ~death#kn/spl/death#k0.spl~ ~override~ // passive
 
-COPY ~death#kn/spl/death#k1.spl~ ~override~ // 5 feet aura of fear
+COPY_EXISTING ~spwi203.spl~ ~override/death#k1.spl~ // detect invisiblilty
+    WRITE_SHORT 0x001c 4
+
+COPY_EXISTING ~sppr416.spl~ ~override/death#ka.spl~ // clock of fear
+    WRITE_SHORT 0x001c 4
 
 COPY ~death#kn/spl/death#k2.spl~ ~override~ // 20D6 fire ball
 SAY NAME1 @201
