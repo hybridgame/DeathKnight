@@ -10,7 +10,7 @@ LANGUAGE    ~Korean~
 // Death Knight
 
 BEGIN ~Death Knight kit for Paladin~ DESIGNATED 0
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee~ @1
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ @1
 
 INCLUDE "death#kn/lib/fl#add_kit_ee.tpa"
 
@@ -93,10 +93,10 @@ COPY_EXISTING ~sppr416.spl~ ~override/death#ka.spl~ // clock of fear
     WRITE_SHORT 0x001c 4
 
 COPY ~death#kn/spl/death#k2.spl~ ~override~ // 20D6 fire ball
-SAY NAME1 @201
+    SAY NAME1 @201
 
 COPY ~death#kn/spl/death#k3.spl~ ~override~ // dispel magic
-SAY NAME1 @202
+    SAY NAME1 @202
 
 COPY_EXISTING ~spwi501.spl~ ~override/death#k9.spl~ // animate dead
     WRITE_SHORT 0x001c 4
